@@ -1,0 +1,31 @@
+{% extends 'skeleton.html.twig' %}
+
+{% set login = false %}
+
+{% block body %}
+<nav class="navbar is-primary is-fixed-top has-shadow" id="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" href="{{ path('home') }}">
+      <img src="{{ asset('Icon White.svg') }}">
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div class="navbar-menu" id="navbar-menu">
+    <div class="navbar-start">
+    </div>
+
+    <div class="navbar-end">
+      <a class="navbar-item" href="#">Logout</a>
+    </div>
+  </div>
+</nav>
+
+{% block main %}{% endblock %}
+{% endblock %}
