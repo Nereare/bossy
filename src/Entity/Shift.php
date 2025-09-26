@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Enum\TurnStatus;
 use App\Repository\ShiftRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -20,6 +22,24 @@ class Shift
 
   #[ORM\Column(enumType: TurnStatus::class)]
   private ?TurnStatus $turn = null;
+
+  /**
+   * @var Collection<int, Worker>
+   */
+  #[ORM\ManyToMany(targetEntity: Worker::class)]
+  private Collection $NurseSupervision;
+
+  /**
+   * @var Collection<int, Shiftstation>
+   */
+  #[ORM\OneToMany(targetEntity: Shiftstation::class, mappedBy: 'shift', orphanRemoval: true)]
+  private Collection $Stations;
+
+  public function __construct()
+  {
+      $this->NurseSupervision = new ArrayCollection();
+      $this->Stations = new ArrayCollection();
+  }
 
   public function getId(): ?int
   {
@@ -48,5 +68,59 @@ class Shift
     $this->turn = $turn;
 
     return $this;
+  }
+
+  /**
+   * @return Collection<int, Worker>
+   */
+  public function getNurseSupervision(): Collection
+  {
+      return $this->NurseSupervision;
+  }
+
+  public function addNurseSupervision(Worker $nurseSupervision): static
+  {
+      if (!$this->NurseSupervision->contains($nurseSupervision)) {
+          $this->NurseSupervision->add($nurseSupervision);
+      }
+
+      return $this;
+  }
+
+  public function removeNurseSupervision(Worker $nurseSupervision): static
+  {
+      $this->NurseSupervision->removeElement($nurseSupervision);
+
+      return $this;
+  }
+
+  /**
+   * @return Collection<int, Shiftstation>
+   */
+  public function getStations(): Collection
+  {
+      return $this->Stations;
+  }
+
+  public function addStation(Shiftstation $station): static
+  {
+      if (!$this->Stations->contains($station)) {
+          $this->Stations->add($station);
+          $station->setShift($this);
+      }
+
+      return $this;
+  }
+
+  public function removeStation(Shiftstation $station): static
+  {
+      if ($this->Stations->removeElement($station)) {
+          // set the owning side to null (unless already changed)
+          if ($station->getShift() === $this) {
+              $station->setShift(null);
+          }
+      }
+
+      return $this;
   }
 }
