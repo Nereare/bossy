@@ -13,8 +13,7 @@ Encore
   .enableSourceMaps(!Encore.isProduction())
   .enableVersioning(Encore.isProduction())
   .enableSassLoader()
-  // uncomment if you're having problems with a jQuery plugin
-  //.autoProvidejQuery()
+  .autoProvidejQuery()
 
   /* Main entry */
   .addEntry('main', './assets/main.js')
