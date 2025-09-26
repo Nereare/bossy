@@ -14,13 +14,11 @@
     <meta name="apple-mobile-web-app-title" content="Bossy"/>
     <link rel="manifest" href="/favicon/site.webmanifest"/>
 
-    {% block stylesheets %}
-      {{ encore_entry_link_tags('main') }}
-    {% endblock %}
+    {{ encore_entry_link_tags('main') }}
+    {% block stylesheets %}{% endblock %}
 
-    {% block javascripts %}
-      {{ encore_entry_script_tags('main') }}
-    {% endblock %}
+    {{ encore_entry_script_tags('main') }}
+    {% block javascripts %}{% endblock %}
   </head>
   <body>
     {% block body %}{% endblock %}
