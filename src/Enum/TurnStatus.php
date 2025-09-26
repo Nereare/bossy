@@ -4,6 +4,8 @@ namespace App\Enum;
 
 enum TurnStatus: string
 {
-  case Day = 'day';
-  case Night = 'night';
+  case WeekDay = 'week-day';
+  case WeekNight = 'week-night';
+  case WeekendDay = 'weekend-day';
+  case WeekendNight = 'weekend-night';
 }
