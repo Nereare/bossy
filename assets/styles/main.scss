@@ -1,11 +1,18 @@
-// Variables
-$family-primary: "Quicksand", sans-serif;
-$family-monospace: "Source Code Pro", monospace;
+// Font Variables
+$family-primary   : "Quicksand", sans-serif;
+$family-monospace : "Source Code Pro", monospace;
+// Color Variables
+$color-main       : #6a381f;
+$color-main-light : #dcab6b;
+$color-aux        : #774e24;
+$color-aux-light  : #ffffb3;
+$color-compl      : #6e0d25;
 
 // Bulma's structure
 @use "bulma/sass/utilities" with (
   // Colors
-  $primary: #284b63,
+  $primary: $color-main,
+  $link: $color-main-light,
   // Typography
   $family-primary: $family-primary,
   $family-secondary: $family-primary,
@@ -18,17 +25,10 @@ $family-monospace: "Source Code Pro", monospace;
 @use "@fontsource/source-code-pro";
 @forward "~@mdi/font/scss/materialdesignicons.scss";
 
-.login.hero {
-  figure {
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
+html { padding-top: 1.5rem; }
 
 // Set all paragraphs to justified alignment
-p {
-  text-align: justify;
-}
+p { text-align: justify; }
 
 // Set all form fields to monospaced font
 input,
@@ -36,4 +36,11 @@ select,
 textarea,
 label {
   font-family: $family-monospace;
+}
+
+.login.hero {
+  figure {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
