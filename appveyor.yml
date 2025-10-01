@@ -1,17 +1,12 @@
 image: Ubuntu2204
 
 environment:
+  php: "8.2"
   SYMFONY_ENV: test
 
 install:
-  - sudo apt-get update
-  - sudo apt-get install -y php8.1 php8.1-cli php8.1-xml php8.1-mbstring php8.1-intl php8.1-curl php8.1-zip unzip
   - php -v
-  - curl -sS https://getcomposer.org/installer -o composer-setup.php
-  - php composer-setup.php
-  - rm composer-setup.php
-  - php composer.phar self-update
-  - php composer.phar install --no-interaction --prefer-dist
+  - composer install
 
 build: false
 
@@ -20,7 +15,6 @@ test_script:
 
 cache:
   - vendor -> composer.lock
-  - composer.phar
   - ~/.composer
 
 artifacts:
