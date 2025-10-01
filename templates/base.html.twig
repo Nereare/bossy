@@ -22,7 +22,22 @@
     </div>
 
     <div class="navbar-end">
-      <a class="navbar-item" href="{{ path('logout') }}">Logout</a>
+      <a class="navbar-item">
+        <span class="icon-text">
+          <span class="icon">
+            <i class="mdi mdi-account"></i>
+          </span>
+          <span>{{ app.user.username }}</span>
+        </span>
+      </a>
+      <a class="navbar-item" href="{{ path('logout') }}">
+        <span class="icon-text">
+          <span class="icon">
+            <i class="mdi mdi-logout"></i>
+          </span>
+          <span>Logout</span>
+        </span>
+      </a>
     </div>
   </div>
 </nav>
