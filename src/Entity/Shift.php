@@ -35,6 +35,10 @@ class Shift
   #[ORM\OneToMany(targetEntity: Shiftstation::class, mappedBy: 'shift', orphanRemoval: true)]
   private Collection $Stations;
 
+  #[ORM\ManyToOne(inversedBy: 'shifts')]
+  #[ORM\JoinColumn(nullable: false)]
+  private ?User $Head = null;
+
   public function __construct()
   {
       $this->NurseSupervision = new ArrayCollection();
@@ -120,6 +124,18 @@ class Shift
               $station->setShift(null);
           }
       }
+
+      return $this;
+  }
+
+  public function getHead(): ?User
+  {
+      return $this->Head;
+  }
+
+  public function setHead(?User $Head): static
+  {
+      $this->Head = $Head;
 
       return $this;
   }

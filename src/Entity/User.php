@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -45,6 +47,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 512)]
     private ?string $email = null;
+
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?Shift $currentShift = null;
+
+    /**
+     * @var Collection<int, Shift>
+     */
+    #[ORM\OneToMany(targetEntity: Shift::class, mappedBy: 'Head')]
+    private Collection $shifts;
+
+    public function __construct()
+    {
+        $this->shifts = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -183,6 +199,48 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setEmail(string $email): static
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getCurrentShift(): ?Shift
+    {
+        return $this->currentShift;
+    }
+
+    public function setCurrentShift(?Shift $currentShift): static
+    {
+        $this->currentShift = $currentShift;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Shift>
+     */
+    public function getShifts(): Collection
+    {
+        return $this->shifts;
+    }
+
+    public function addShift(Shift $shift): static
+    {
+        if (!$this->shifts->contains($shift)) {
+            $this->shifts->add($shift);
+            $shift->setHead($this);
+        }
+
+        return $this;
+    }
+
+    public function removeShift(Shift $shift): static
+    {
+        if ($this->shifts->removeElement($shift)) {
+            // set the owning side to null (unless already changed)
+            if ($shift->getHead() === $this) {
+                $shift->setHead(null);
+            }
+        }
 
         return $this;
     }
