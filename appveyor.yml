@@ -1,0 +1,25 @@
+image: Ubuntu2204
+
+environment:
+  SYMFONY_ENV: test
+
+install:
+  - sudo apt-get update
+  - sudo apt-get install -y php8.2 php8.2-cli php8.2-xml php8.2-mbstring php8.2-intl php8.2-curl php8.2-zip unzip
+  - php -v
+  - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+  - composer self-update
+  - composer install --no-interaction --prefer-dist
+
+build: false
+
+test_script:
+  - php bin/phpunit
+
+cache:
+  - vendor -> composer.lock
+  - ~/.composer
+
+artifacts:
+  - path: var/logs
+    name: logs
