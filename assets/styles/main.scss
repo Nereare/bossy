@@ -44,3 +44,16 @@ label {
     margin-right: auto;
   }
 }
+
+@mixin left-border-color($color) {
+  border-left: 1rem solid $color;
+  box-shadow: 0 0.5em 1em -0.125em $color, 0 0px 0 1px $color;
+}
+.box{
+  &.is-primary { @include left-border-color(hsl(171, 100%, 41%)); }
+  &.is-link { @include left-border-color(hsl(217, 71%, 53%)); }
+  &.is-info { @include left-border-color(hsl(204, 86%, 53%)); }
+  &.is-success { @include left-border-color(hsl(141, 71%, 48%)); }
+  &.is-warning { @include left-border-color(hsl(48, 100%, 67%)); }
+  &.is-danger { @include left-border-color(hsl(348, 100%, 61%)); }
+}
