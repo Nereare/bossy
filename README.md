@@ -1,8 +1,19 @@
 # Bossy Hub
 
 [![GitHub package.json version](https://img.shields.io/github/package-json/v/Nereare/bossy)](https://github.com/Nereare/bossy)
-[![License](https://img.shields.io/github/license/Nereare/bossy.svg)](LICENSE.md)
+[![GitHub License](https://img.shields.io/github/license/Nereare/bossy)](LICENSE.md)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE-OF-CONDUCT.md)
+
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/Nereare/bossy/symfony.yml)](https://github.com/Nereare/bossy/actions/workflows/symfony.yml)
+![AppVeyor Build](https://img.shields.io/appveyor/build/Nereare/bossy)
+
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Nereare_bossy&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Nereare_bossy)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=Nereare_bossy&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=Nereare_bossy)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Nereare_bossy&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=Nereare_bossy)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=Nereare_bossy&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=Nereare_bossy)
+
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/t/Nereare/bossy)](https://github.com/Nereare/bossy/commits/master/)
+![GitHub top language](https://img.shields.io/github/languages/top/Nereare/bossy)
 
 Laboris enim tamen consequat magna. De duis incididunt excepteur o mentitum duis
 voluptate. Commodo irure ipsum ad anim.Quem cupidatat eu quem irure. Quid non
