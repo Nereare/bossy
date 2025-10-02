@@ -1,15 +1,39 @@
 {% extends 'base.html.twig' %}
 
 {% block main %}
-<div class="box has-text-centered">
+{% if app.user.currentShift %}
+foo
+{% else %}
+<div class="box is-danger">
 	<div class="content">
-		{{ dump(app.user.crmNumber) }}
+    <div class="columns">
+      <div class="column is-2">
+        <img src="{{ asset('images/no-poo.svg') }}">
+      </div>
+
+      <div class="column">
+        <h2 class="title is-3">Nenhum plantão ativo~</h2>
+        <div class="field">
+          <div class="control">
+            <a class="button is-success">
+              <span class="icon-text">
+                <span class="icon">
+                  <i class="mdi mdi-calendar-plus"></i>
+                </span>
+                <span>Criar Plantão</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
 	</div>
 </div>
+{% endif %}
 
 <div class="box has-text-centered">
 	<div class="content">
-		<p>Nenhuma postagem por enquanto... 😔</p>
+		<p>Nenhuma estatística por enquanto... 😔</p>
 	</div>
 </div>
 {% endblock %}
